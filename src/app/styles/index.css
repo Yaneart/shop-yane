@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+:root {
+  --bg: #ffffff;
+  --bg-secondary: #d8d3d3;
+  --bg-tertiary: #ebbcbc;
+
+  --text: #0a0a0a;
+  --text-secondary: #404040;
+  --text-tertiary: #737373;
+
+  --border: #c8c8c8;
+  --border-hover: #d4d4d4;
+
+  --accent: #0a0a0a;
+  --accent-hover: #000000;
+  --accent-text: #fffafa;
+
+  --shadow: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme='dark'] {
+  --bg: #0a0a0a;
+  --bg-secondary: #171717;
+  --bg-tertiary: #262626;
+
+  --text: #fafafa;
+  --text-secondary: #bebbbb;
+  --text-tertiary: #a3a3a3;
+
+  --border: #262626;
+  --border-hover: #404040;
+
+  --accent: #fafafa;
+  --accent-hover: #ffffff;
+  --accent-text: #0a0a0a;
+
+  --shadow: rgba(255, 255, 255, 0.15);
+}
+
+@theme {
+  --color-bg: var(--bg);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-text: var(--accent-text);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg);
+    color: var(--text);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+  }
+
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
