@@ -32,12 +32,12 @@ export function Section({
           )}
           <div className="flex items-center gap-4 self-center lg:self-start">
             <Link to={'/catalog'}>
-              <button className="bg-accent text-accent-text hover:bg-accent-hover rounded-2xl px-5 py-2.5 text-sm font-semibold transition-colors sm:px-6 sm:py-3 sm:text-base md:text-lg">
+              <button className="bg-accent text-accent-text hover:bg-accent-hover rounded-2xl px-5 py-2.5 text-sm font-semibold transition-transform duration-200 ease-in-out hover:scale-110 sm:px-6 sm:py-3 sm:text-base md:text-lg">
                 shop now
               </button>
             </Link>
             <Link to={'/cart'}>
-              <button className="bg-accent-text text-accent border-border hover:border-border-hover rounded-2xl border px-5 py-2.5 text-sm font-semibold transition-colors sm:px-6 sm:py-3 sm:text-base md:text-lg">
+              <button className="bg-accent-text text-accent border-border hover:border-border-hover rounded-2xl border px-5 py-2.5 text-sm font-semibold transition-transform duration-200 ease-in-out hover:scale-110 sm:px-6 sm:py-3 sm:text-base md:text-lg">
                 checkout
               </button>
             </Link>
