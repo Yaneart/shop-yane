@@ -51,6 +51,7 @@ export function ProductDetail() {
           image: product.image,
           price: product.price,
           oldPrice: product.oldPrice,
+          quantity,
         }),
       );
     }
