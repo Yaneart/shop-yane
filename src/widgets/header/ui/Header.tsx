@@ -1,9 +1,10 @@
-import { BookOpen, Search, Sun, Moon, ShoppingBasket } from 'lucide-react';
+import { BookOpen, Sun, Moon, ShoppingBasket } from 'lucide-react';
 import { useTheme } from '@shared/lib';
 import { Logo } from '@shared/ui/Logo';
 import { Link } from 'react-router-dom';
 import { useSelector } from '@/app/store';
 import { selectCartItemCount } from '@/entities/cart';
+import { SearchDropdown } from '@features/search';
 
 export function Header() {
   const { theme, toggle } = useTheme();
@@ -24,13 +25,7 @@ export function Header() {
           </Link>
         </div>
 
-        <div className="bg-bg-secondary border-border flex h-9 w-96 items-center gap-2 rounded-lg border px-3">
-          <Search size={22} className="text-text-tertiary" />
-          <input
-            placeholder="Поиск..."
-            className="text-text placeholder:text-text-tertiary w-full bg-transparent text-sm leading-none outline-none"
-          />
-        </div>
+        <SearchDropdown />
 
         <div className="ml-auto flex shrink-0 items-center gap-4">
           <Link to={'/cart'}>
