@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Фон -->
+  <rect x="2" y="2" width="28" height="28" rx="7" fill="currentColor"></rect>
+
+  <!-- Корзина -->
+  <path d="M10 14h12l-1.5 10h-9L10 14z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"></path>
+
+  <!-- Ручка -->
+  <path d="M13.5 14v-2.5a2.5 2.5 0 1 1 5 0V14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"></path>
+</svg>

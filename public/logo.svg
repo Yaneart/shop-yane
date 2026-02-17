@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" fill="none">
+  <!-- Иконка -->
+  <rect x="2" y="6" width="28" height="28" rx="7" fill="currentColor"></rect>
+
+  <path d="M10 16h12l-1.5 10h-9L10 16z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"></path>
+
+  <path d="M13.5 16v-2.5a2.5 2.5 0 1 1 5 0V16" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <!-- Текст -->
+  <text x="38" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="currentColor">
+    YANE
+  </text>
+</svg>
