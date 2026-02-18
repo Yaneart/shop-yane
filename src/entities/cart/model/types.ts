@@ -9,4 +9,6 @@ export interface CartItem {
 
 export interface CartState {
   items: CartItem[];
+  promoCode: string | null;
+  promoPercent: number;
 }

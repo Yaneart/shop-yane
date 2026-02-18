@@ -4,6 +4,12 @@ import type { CartItem, CartState } from './types';
 
 const STORAGE_KEY = 'cart';
 
+const PROMO_CODES: Record<string, number> = {
+  YANE10: 10,
+  YANE20: 20,
+  SALE15: 15,
+};
+
 const loadCart = (): CartItem[] => {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
@@ -16,6 +22,8 @@ const loadCart = (): CartItem[] => {
 
 const initialState: CartState = {
   items: loadCart(),
+  promoCode: null,
+  promoPercent: 0,
 };
 
 const cartSlice = createSlice({
@@ -50,12 +58,34 @@ const cartSlice = createSlice({
     },
     clearCart(state) {
       state.items = [];
+      state.promoCode = null;
+      state.promoPercent = 0;
+    },
+    applyPromo(state, action: PayloadAction<string>) {
+      const code = action.payload.toUpperCase().trim();
+      const percent = PROMO_CODES[code];
+      if (percent) {
+        state.promoCode = code;
+        state.promoPercent = percent;
+      }
+    },
+    removePromo(state) {
+      state.promoCode = null;
+      state.promoPercent = 0;
     },
   },
 });
 
-export const { addToCart, removeFromCart, updateQuantity, clearCart } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  updateQuantity,
+  clearCart,
+  applyPromo,
+  removePromo,
+} = cartSlice.actions;
+
+export const AVAILABLE_PROMO_CODES = PROMO_CODES;
 
 export const selectCartItems = (state: RootState) => state.cart.items;
 
@@ -74,5 +104,8 @@ export const selectCartDiscount = (state: RootState) =>
 
 export const selectIsInCart = (id: number) => (state: RootState) =>
   state.cart.items.some((item) => item.id === id);
+
+export const selectPromoCode = (state: RootState) => state.cart.promoCode;
+export const selectPromoPercent = (state: RootState) => state.cart.promoPercent;
 
 export default cartSlice.reducer;

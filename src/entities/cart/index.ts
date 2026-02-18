@@ -3,11 +3,16 @@ export {
   removeFromCart,
   updateQuantity,
   clearCart,
+  applyPromo,
+  removePromo,
+  AVAILABLE_PROMO_CODES,
   selectCartItems,
   selectCartTotal,
   selectCartItemCount,
   selectCartDiscount,
   selectIsInCart,
+  selectPromoCode,
+  selectPromoPercent,
 } from './model/cartSlice';
 
 export { default as cartReducer } from './model/cartSlice';
