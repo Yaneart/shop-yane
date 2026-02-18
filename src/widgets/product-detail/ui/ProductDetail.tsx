@@ -14,8 +14,6 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 
-const SIZES = ['S', 'M', 'L', 'XL'] as const;
-
 export function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -159,7 +157,7 @@ export function ProductDetail() {
           <div>
             <p className="text-text mb-3 font-medium">Choose Size</p>
             <div className="flex gap-3">
-              {SIZES.map((size) => (
+              {product.sizes.map((size) => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}

@@ -5,10 +5,12 @@ import {
   useSelector as selectorHook,
 } from 'react-redux';
 import { cartReducer } from '@entities/cart';
+import { filterReducer } from '@features/catalo-filter';
 
 const store = configureStore({
   reducer: {
     cart: cartReducer,
+    filter: filterReducer,
   },
 });
 
