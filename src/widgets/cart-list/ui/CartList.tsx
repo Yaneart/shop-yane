@@ -5,6 +5,7 @@ import {
   removeFromCart,
   updateQuantity,
 } from '@entities/cart';
+import toast from 'react-hot-toast';
 
 export function CartList() {
   const items = useSelector(selectCartItems);
@@ -37,6 +38,14 @@ export function CartList() {
           />
           <div className="flex flex-1 flex-col gap-1">
             <p className="font-medium">{item.name}</p>
+            {item.size && (
+              <p className="text-text-tertiary text-xs">
+                Size:{' '}
+                <span className="text-text-secondary font-medium">
+                  {item.size}
+                </span>
+              </p>
+            )}
             <div className="flex items-center gap-2">
               <p className="text-text-secondary text-sm">${item.price}</p>
               {item.oldPrice && (
@@ -44,7 +53,7 @@ export function CartList() {
                   <p className="text-text-tertiary text-xs line-through">
                     ${item.oldPrice}
                   </p>
-                  <span className="rounded bg-bg-tertiary px-1.5 py-0.5 text-xs font-semibold text-red-500">
+                  <span className="bg-bg-tertiary rounded px-1.5 py-0.5 text-xs font-semibold text-red-500">
                     -
                     {Math.round(
                       ((item.oldPrice - item.price) / item.oldPrice) * 100,
@@ -85,7 +94,10 @@ export function CartList() {
             </button>
           </div>
           <button
-            onClick={() => dispatch(removeFromCart(item.id))}
+            onClick={() => {
+              dispatch(removeFromCart(item.id));
+              toast.success('Вещь удалена из корзины');
+            }}
             className="text-text-tertiary hover:text-red-500"
           >
             ✕

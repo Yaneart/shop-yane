@@ -30,7 +30,7 @@ export function SearchDropdown() {
 
   return (
     <div ref={ref} className="relative w-96">
-      <div className="bg-bg-secondary border-border flex h-9 items-center gap-2 rounded-lg border px-3">
+      <div className="border-border flex h-9 items-center gap-2 rounded-lg border px-3">
         <Search size={22} className="text-text-tertiary" />
         <input
           value={query}

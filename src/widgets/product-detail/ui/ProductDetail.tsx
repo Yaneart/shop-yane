@@ -13,6 +13,7 @@ import {
   Truck,
   ShieldCheck,
 } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export function ProductDetail() {
   const { id } = useParams();
@@ -41,6 +42,7 @@ export function ProductDetail() {
   const handleCartToggle = () => {
     if (isInCart) {
       dispatch(removeFromCart(product.id));
+      toast('Удалено из корзины!');
     } else {
       dispatch(
         addToCart({
@@ -50,7 +52,9 @@ export function ProductDetail() {
           price: product.price,
           oldPrice: product.oldPrice,
           quantity,
+          size: selectedSize,
         }),
+        toast.success('Добавлено в корзину!')
       );
     }
   };

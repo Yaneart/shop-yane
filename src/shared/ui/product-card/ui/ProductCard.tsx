@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from '@app/store';
 import { addToCart, removeFromCart, selectIsInCart } from '@entities/cart';
 import { StarIcon } from '../../custom-icon/CustomIcons';
+import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
 
 interface ProductCardProps {
@@ -32,8 +33,10 @@ export function ProductCard({
     e.stopPropagation();
     if (isInCart) {
       dispatch(removeFromCart(id));
+      toast.success('Удалено из корзины!');
     } else {
       dispatch(addToCart({ id, name, image, price, oldPrice }));
+      toast.success('Добавлено в корзину!');
     }
   };
 
