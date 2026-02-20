@@ -11,7 +11,7 @@ export function Header() {
   const count = useSelector(selectCartItemCount);
 
   return (
-    <header className="border-border bg-bg border-b">
+    <header className="border-border bg-bg sticky top-0 z-50 border-b">
       <nav className="flex w-full items-center gap-15 px-16 py-4">
         <div className="flex shrink-0 items-center gap-3">
           <Link to={'/'}>
