@@ -4,6 +4,7 @@ import { AppLayout } from './layout/AppLayout';
 import { CartPage } from '@/pages/cart';
 import { ClothesPage } from '@/pages/clothes';
 import { CatalogPage } from '@/pages/catalog';
+import { NotFoundPage } from '@/pages/not-found';
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: '/clothes/:id',
         element: <ClothesPage />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
       },
     ],
   },
