@@ -30,7 +30,7 @@ export function Header() {
         <div className="ml-auto flex shrink-0 items-center gap-4">
           <Link to={'/cart'}>
             <div className="relative">
-              <span className="absolute -right-3">{count}</span>
+              <span key={count} className="cart-pop absolute -right-3">{count}</span>
               <ShoppingBasket
                 size={35}
                 className="text-text-secondary hover:text-text transition-colors"
