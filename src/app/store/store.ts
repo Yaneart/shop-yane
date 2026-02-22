@@ -5,21 +5,28 @@ import {
   useSelector as selectorHook,
 } from 'react-redux';
 import { cartReducer } from '@entities/cart';
+import { wishlistReducer } from '@entities/wishlist';
 import { filterReducer } from '@features/catalo-filter';
 
 const store = configureStore({
   reducer: {
     cart: cartReducer,
+    wishlist: wishlistReducer,
     filter: filterReducer,
   },
 });
 
-let previousItems = store.getState().cart.items;
+let previousCart = store.getState().cart.items;
+let previousWishlist = store.getState().wishlist.items;
 store.subscribe(() => {
-  const currentItems = store.getState().cart.items;
-  if (currentItems !== previousItems) {
-    previousItems = currentItems;
-    localStorage.setItem('cart', JSON.stringify(currentItems));
+  const state = store.getState();
+  if (state.cart.items !== previousCart) {
+    previousCart = state.cart.items;
+    localStorage.setItem('cart', JSON.stringify(state.cart.items));
+  }
+  if (state.wishlist.items !== previousWishlist) {
+    previousWishlist = state.wishlist.items;
+    localStorage.setItem('wishlist', JSON.stringify(state.wishlist.items));
   }
 });
 
