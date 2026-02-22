@@ -1,6 +1,11 @@
 import { useDispatch, useSelector } from '@app/store';
 import { addToCart, removeFromCart, selectIsInCart } from '@entities/cart';
+import {
+  toggleWishlist,
+  selectIsInWishlist,
+} from '@entities/wishlist';
 import { StarIcon } from '../../custom-icon/CustomIcons';
+import { Heart } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
 
@@ -23,10 +28,18 @@ export function ProductCard({
 }: ProductCardProps) {
   const dispatch = useDispatch();
   const isInCart = useSelector(selectIsInCart(id));
+  const isInWishlist = useSelector(selectIsInWishlist(id));
 
   const discount = oldPrice
     ? Math.round(((oldPrice - price) / oldPrice) * 100)
     : null;
+
+  const handleToggleWishlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(toggleWishlist({ id, name, image, price, oldPrice, rating }));
+    toast.success(isInWishlist ? 'Удалено из избранного!' : 'Добавлено в избранное!');
+  };
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -53,6 +66,19 @@ export function ProductCard({
             -{discount}%
           </span>
         )}
+        <button
+          onClick={handleToggleWishlist}
+          className="absolute top-2 right-2 rounded-full bg-white/80 p-1.5 backdrop-blur-sm transition-transform hover:scale-110"
+          aria-label={isInWishlist ? 'Удалить из избранного' : 'В избранное'}
+        >
+          <Heart
+            size={18}
+            className={clsx(
+              'transition-colors',
+              isInWishlist ? 'fill-red-500 text-red-500' : 'text-gray-400',
+            )}
+          />
+        </button>
       </div>
 
       <div className="flex w-full flex-col gap-1 pt-3">
