@@ -68,7 +68,7 @@ export function ProductCard({
         )}
         <button
           onClick={handleToggleWishlist}
-          className="absolute top-2 right-2 rounded-full bg-white/80 p-1.5 backdrop-blur-sm transition-transform hover:scale-110"
+          className="absolute top-2 right-2 rounded-full p-1.5 backdrop-blur-sm transition-transform hover:scale-110"
           aria-label={isInWishlist ? 'Удалить из избранного' : 'В избранное'}
         >
           <Heart
