@@ -10,6 +10,7 @@ import {
   AVAILABLE_PROMO_CODES,
 } from '@/entities/cart';
 import { Tag, X } from 'lucide-react';
+import { CheckoutModal } from '@/widgets/checkout-modal';
 
 const DELIVERY_FEE = 5.0;
 const FREE_DELIVERY_THRESHOLD = 50;
@@ -23,6 +24,7 @@ export function OrderSummary() {
 
   const [input, setInput] = useState('');
   const [error, setError] = useState('');
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   const promoDiscount = promoPercent > 0 ? (subtotal * promoPercent) / 100 : 0;
   const delivery =
@@ -139,10 +141,17 @@ export function OrderSummary() {
           </form>
         )}
 
-        <button className="bg-accent text-accent-text hover:bg-accent-hover w-full rounded-full py-3.5 text-sm font-medium transition-colors sm:text-base">
+        <button
+          onClick={() => setCheckoutOpen(true)}
+          className="bg-accent text-accent-text hover:bg-accent-hover w-full rounded-full py-3.5 text-sm font-medium transition-colors sm:text-base"
+        >
           Checkout
         </button>
       </div>
+
+      {checkoutOpen && (
+        <CheckoutModal onClose={() => setCheckoutOpen(false)} />
+      )}
     </div>
   );
 }
