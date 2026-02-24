@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useSelector } from '@app/store';
 import { selectWishlistItems } from '@entities/wishlist';
 import { ProductCard } from '@shared/ui/product-card';
@@ -10,6 +11,9 @@ export function WishlistPage() {
   if (items.length === 0) {
     return (
       <section className="flex min-h-[70vh] flex-col items-center justify-center gap-4 px-4 text-center">
+        <Helmet>
+          <title>Wishlist — YaneSHOP</title>
+        </Helmet>
         <Heart size={64} className="text-text/20" />
         <h1 className="text-text text-2xl font-bold">Избранное пусто</h1>
         <p className="text-text-tertiary max-w-sm text-base">
@@ -27,6 +31,9 @@ export function WishlistPage() {
 
   return (
     <section className="px-4 py-10 sm:px-8 lg:px-16">
+      <Helmet>
+        <title>Wishlist ({items.length}) — YaneSHOP</title>
+      </Helmet>
       <h1 className="text-text mb-8 text-2xl font-bold sm:text-3xl">
         Избранное
         <span className="text-text-tertiary ml-2 text-lg font-normal">

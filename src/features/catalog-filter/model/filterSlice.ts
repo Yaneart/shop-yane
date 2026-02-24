@@ -1,4 +1,8 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  createSelector,
+  type PayloadAction,
+} from '@reduxjs/toolkit';
 import type { RootState } from '@app/store';
 import { mockProducts } from '@entities/product';
 
@@ -58,31 +62,31 @@ export const {
 
 export const selectFilters = (state: RootState) => state.filter;
 
-export const selectFilteredProducts = (state: RootState) => {
-  const { categories, priceMin, priceMax, sizes } = state.filter;
+export const selectFilteredProducts = createSelector(
+  [selectFilters],
+  ({ categories, priceMin, priceMax, sizes }) =>
+    mockProducts.filter((product) => {
+      if (categories.length > 0 && !categories.includes(product.category)) {
+        return false;
+      }
 
-  return mockProducts.filter((product) => {
-    if (categories.length > 0 && !categories.includes(product.category)) {
-      return false;
-    }
+      if (priceMin !== null && product.price < priceMin) {
+        return false;
+      }
 
-    if (priceMin !== null && product.price < priceMin) {
-      return false;
-    }
+      if (priceMax !== null && product.price > priceMax) {
+        return false;
+      }
 
-    if (priceMax !== null && product.price > priceMax) {
-      return false;
-    }
+      if (
+        sizes.length > 0 &&
+        !sizes.some((size) => product.sizes.includes(size))
+      ) {
+        return false;
+      }
 
-    if (
-      sizes.length > 0 &&
-      !sizes.some((size) => product.sizes.includes(size))
-    ) {
-      return false;
-    }
-
-    return true;
-  });
-};
+      return true;
+    }),
+);
 
 export default filterSlice.reducer;
