@@ -8,9 +8,7 @@ import {
   selectPromoCode,
   selectPromoPercent,
 } from '@/entities/cart';
-
-const DELIVERY_FEE = 5.0;
-const FREE_DELIVERY_THRESHOLD = 50;
+import { DELIVERY_FEE, FREE_DELIVERY_THRESHOLD } from '@shared/config';
 
 interface Props {
   onSuccess: (email: string) => void;

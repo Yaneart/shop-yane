@@ -7,7 +7,7 @@ import {
   setPriceMax,
   toggleSize,
   resetFilters,
-} from '@features/catalo-filter';
+} from '@features/catalog-filter';
 import clsx from 'clsx';
 
 const CATEGORIES = ['T-shirts', 'Hoodie', 'Jackets', 'Pajamas', 'Long-sleeve'];

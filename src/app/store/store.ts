@@ -6,7 +6,7 @@ import {
 } from 'react-redux';
 import { cartReducer } from '@entities/cart';
 import { wishlistReducer } from '@entities/wishlist';
-import { filterReducer } from '@features/catalo-filter';
+import { filterReducer } from '@features/catalog-filter';
 
 const store = configureStore({
   reducer: {

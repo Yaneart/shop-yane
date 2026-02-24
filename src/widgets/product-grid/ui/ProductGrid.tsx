@@ -1,7 +1,7 @@
 import { ProductCard } from '@/shared/ui/product-card';
 import { Link } from 'react-router-dom';
 import { useSelector } from '@app/store';
-import { selectFilteredProducts } from '@features/catalo-filter';
+import { selectFilteredProducts } from '@features/catalog-filter';
 
 export function ProductGrid() {
   const products = useSelector(selectFilteredProducts);

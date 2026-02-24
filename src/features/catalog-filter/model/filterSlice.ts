@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@app/store';
-import { mockProducts } from '@shared/ui/product-card';
+import { mockProducts } from '@entities/product';
 
 interface FilterState {
   categories: string[];

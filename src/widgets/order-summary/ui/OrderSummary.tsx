@@ -11,9 +11,7 @@ import {
 } from '@/entities/cart';
 import { Tag, X } from 'lucide-react';
 import { CheckoutModal } from '@/widgets/checkout-modal';
-
-const DELIVERY_FEE = 5.0;
-const FREE_DELIVERY_THRESHOLD = 50;
+import { DELIVERY_FEE, FREE_DELIVERY_THRESHOLD } from '@shared/config';
 
 export function OrderSummary() {
   const dispatch = useDispatch();

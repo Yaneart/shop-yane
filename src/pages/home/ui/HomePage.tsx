@@ -1,7 +1,7 @@
 import { HomeSection } from '@/widgets/home-section';
 import { Reviews } from '@/widgets/reviews-section';
 import { ProductSection } from '@/widgets/selling';
-import { mockProducts } from '@/shared/ui/product-card';
+import { mockProducts } from '@entities/product';
 
 export function HomePage() {
   return (

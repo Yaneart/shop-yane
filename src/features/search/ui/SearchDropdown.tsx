@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { mockProducts } from '@shared/ui/product-card/mock';
+import { mockProducts } from '@entities/product';
 
 export function SearchDropdown() {
   const [query, setQuery] = useState('');

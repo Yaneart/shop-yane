@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from '@app/store';
 import { addToCart, removeFromCart, selectIsInCart } from '@entities/cart';
-import { mockProducts } from '@/shared/ui/product-card';
+import { mockProducts } from '@entities/product';
 import clsx from 'clsx';
 import { StarIcon } from '@/shared/ui/custom-icon/CustomIcons';
 import {
@@ -42,7 +42,7 @@ export function ProductDetail() {
   const handleCartToggle = () => {
     if (isInCart) {
       dispatch(removeFromCart(product.id));
-      toast('Удалено из корзины!');
+      toast.success('Удалено из корзины!');
     } else {
       dispatch(
         addToCart({
@@ -54,8 +54,8 @@ export function ProductDetail() {
           quantity,
           size: selectedSize,
         }),
-        toast.success('Добавлено в корзину!')
       );
+      toast.success('Добавлено в корзину!');
     }
   };
 
