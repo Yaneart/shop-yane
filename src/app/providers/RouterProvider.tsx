@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { AppLayout } from './layout/AppLayout';
+import { PageLoader } from './layout/PageLoader';
 
 const HomePage = lazy(() =>
   import('@pages/home').then((m) => ({ default: m.HomePage })),
@@ -21,18 +22,6 @@ const NotFoundPage = lazy(() =>
   import('@/pages/not-found').then((m) => ({ default: m.NotFoundPage })),
 );
 
-function PageLoader() {
-  return (
-    <div className="flex min-h-[50vh] items-center justify-center">
-      <div className="border-accent h-8 w-8 animate-spin rounded-full border-4 border-t-transparent" />
-    </div>
-  );
-}
-
-function SuspensePage({ children }: { children: React.ReactNode }) {
-  return <Suspense fallback={<PageLoader />}>{children}</Suspense>;
-}
-
 export const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -40,49 +29,49 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: (
-          <SuspensePage>
+          <Suspense fallback={<PageLoader />}>
             <HomePage />
-          </SuspensePage>
+          </Suspense>
         ),
       },
       {
         path: '/cart',
         element: (
-          <SuspensePage>
+          <Suspense fallback={<PageLoader />}>
             <CartPage />
-          </SuspensePage>
+          </Suspense>
         ),
       },
       {
         path: '/catalog',
         element: (
-          <SuspensePage>
+          <Suspense fallback={<PageLoader />}>
             <CatalogPage />
-          </SuspensePage>
+          </Suspense>
         ),
       },
       {
         path: '/clothes/:id',
         element: (
-          <SuspensePage>
+          <Suspense fallback={<PageLoader />}>
             <ClothesPage />
-          </SuspensePage>
+          </Suspense>
         ),
       },
       {
         path: '/wishlist',
         element: (
-          <SuspensePage>
+          <Suspense fallback={<PageLoader />}>
             <WishlistPage />
-          </SuspensePage>
+          </Suspense>
         ),
       },
       {
         path: '*',
         element: (
-          <SuspensePage>
+          <Suspense fallback={<PageLoader />}>
             <NotFoundPage />
-          </SuspensePage>
+          </Suspense>
         ),
       },
     ],

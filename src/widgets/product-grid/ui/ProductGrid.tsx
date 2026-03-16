@@ -1,10 +1,13 @@
 import { ProductCard } from '@/shared/ui/product-card';
+import { ProductCardSkeleton } from '@/shared/ui/skeleton';
 import { Link } from 'react-router-dom';
 import { useSelector } from '@app/store';
 import { selectFilteredProducts } from '@features/catalog-filter';
+import { useSimulatedLoading } from '@/shared/hooks/useSimulatedLoading';
 
 export function ProductGrid() {
   const products = useSelector(selectFilteredProducts);
+  const isLoading = useSimulatedLoading();
 
   return (
     <div className="flex-1">
@@ -12,7 +15,15 @@ export function ProductGrid() {
         Catalog
       </h2>
 
-      {products.length === 0 ? (
+      {isLoading ? (
+        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 xl:grid-cols-4">
+          {Array.from({ length: 8 }, (_, i) => (
+            <li key={i}>
+              <ProductCardSkeleton />
+            </li>
+          ))}
+        </ul>
+      ) : products.length === 0 ? (
         <p className="text-text-secondary py-20 text-center text-lg">
           Nothing found. Try changing the filters.
         </p>

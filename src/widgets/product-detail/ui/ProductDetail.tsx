@@ -14,6 +14,8 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { useSimulatedLoading } from '@/shared/hooks/useSimulatedLoading';
+import { ProductDetailSkeleton } from '@/shared/ui/skeleton';
 
 export function ProductDetail() {
   const { id } = useParams();
@@ -24,6 +26,11 @@ export function ProductDetail() {
   const [selectedSize, setSelectedSize] = useState<string>('M');
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const isloading = useSimulatedLoading();
+
+  if (isloading) {
+    return <ProductDetailSkeleton />;
+  }
 
   if (!product) {
     return (
