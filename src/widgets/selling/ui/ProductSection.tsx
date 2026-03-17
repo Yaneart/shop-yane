@@ -20,19 +20,21 @@ interface ProductSectionProps {
 export function ProductSection({ id, title, products }: ProductSectionProps) {
   return (
     <SellingSection id={id} title={title} linkText="View All">
-      <div>
-        <ul className="flex items-center gap-10">
+      <div className="-mx-4 px-4 md:mx-0 md:px-0">
+        <ul className="flex gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-6 md:grid md:grid-cols-4 md:gap-6 md:overflow-visible md:pb-0 lg:grid-cols-5 lg:gap-10 [&::-webkit-scrollbar]:hidden">
           {products.map((p) => (
-            <Link key={p.id} to={`/clothes/${p.id}`}>
-              <ProductCard
-                id={p.id}
-                name={p.name}
-                image={p.image}
-                price={p.price}
-                oldPrice={p.oldPrice}
-                rating={p.rating}
-              />
-            </Link>
+            <li key={p.id} className="w-40 shrink-0 sm:w-48 md:w-auto">
+              <Link to={`/clothes/${p.id}`}>
+                <ProductCard
+                  id={p.id}
+                  name={p.name}
+                  image={p.image}
+                  price={p.price}
+                  oldPrice={p.oldPrice}
+                  rating={p.rating}
+                />
+              </Link>
+            </li>
           ))}
         </ul>
       </div>

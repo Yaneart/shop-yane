@@ -4,7 +4,7 @@ import { ProductGrid } from '@/widgets/product-grid';
 
 export function CatalogPage() {
   return (
-    <section className="flex gap-10 px-4 py-10 sm:px-8 md:px-16 md:py-16 lg:px-24 xl:px-40">
+    <section className="px-4 py-10 sm:px-8 md:px-16 md:py-16 lg:px-24 xl:px-40">
       <Helmet>
         <title>Catalog — YaneSHOP</title>
         <meta
@@ -12,8 +12,10 @@ export function CatalogPage() {
           content="Browse our full catalog of hoodies, t-shirts, jackets, pajamas and long-sleeves."
         />
       </Helmet>
-      <CatalogFilters />
-      <ProductGrid />
+      <div className="flex flex-col lg:flex-row lg:gap-10">
+        <CatalogFilters />
+        <ProductGrid />
+      </div>
     </section>
   );
 }

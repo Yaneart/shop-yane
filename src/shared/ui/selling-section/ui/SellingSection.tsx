@@ -35,9 +35,7 @@ export function SellingSection({
         )}
       </div>
 
-      <div className="flex items-center gap-10">
-        {children}
-      </div>
+      <div>{children}</div>
     </section>
   );
 }
