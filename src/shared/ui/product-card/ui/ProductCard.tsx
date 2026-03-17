@@ -5,6 +5,7 @@ import { StarIcon } from '../../custom-icon/CustomIcons';
 import { Heart } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
+import { useState } from 'react';
 
 interface ProductCardProps {
   id: number;
@@ -26,6 +27,7 @@ export function ProductCard({
   const dispatch = useDispatch();
   const isInCart = useSelector(selectIsInCart(id));
   const isInWishlist = useSelector(selectIsInWishlist(id));
+  const [cartPop, setCartPop] = useState(false);
 
   const discount = oldPrice
     ? Math.round(((oldPrice - price) / oldPrice) * 100)
@@ -43,6 +45,7 @@ export function ProductCard({
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    setCartPop(true);
     if (isInCart) {
       dispatch(removeFromCart(id));
       toast.success('Удалено из корзины!');
@@ -107,9 +110,11 @@ export function ProductCard({
 
         <button
           onClick={handleAddToCart}
+          onAnimationEnd={() => setCartPop(false)}
           className={clsx(
             isInCart ? 'bg-red-500' : 'bg-bg-secondary',
             'btn-press btn-ripple mt-2 min-w-[140px] self-center rounded-lg px-4 py-2 text-center text-xs font-medium text-white sm:text-sm',
+            cartPop && 'add-cart-pop',
           )}
         >
           {isInCart ? 'In Cart' : 'Add to Cart'}

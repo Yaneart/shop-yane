@@ -27,6 +27,7 @@ export function ProductDetail() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const isloading = useSimulatedLoading();
+  const [cartPop, setCartPop] = useState(false);
 
   if (isloading) {
     return <ProductDetailSkeleton />;
@@ -47,6 +48,7 @@ export function ProductDetail() {
   const images = [product.image, product.image, product.image];
 
   const handleCartToggle = () => {
+    setCartPop(true);
     if (isInCart) {
       dispatch(removeFromCart(product.id));
       toast.success('Удалено из корзины!');
@@ -173,7 +175,7 @@ export function ProductDetail() {
                   key={size}
                   onClick={() => setSelectedSize(size)}
                   className={clsx(
-                    'rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors btn-press',
+                    'btn-press rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors',
                     selectedSize === size
                       ? 'bg-accent text-accent-text border-transparent'
                       : 'border-border text-text hover:border-border-hover',
@@ -208,11 +210,13 @@ export function ProductDetail() {
 
             <button
               onClick={handleCartToggle}
+              onAnimationEnd={() => setCartPop(false)}
               className={clsx(
-                'flex-1 rounded-full px-8 py-3 font-medium btn-press btn-ripple',
+                'btn-press btn-ripple flex-1 rounded-full px-8 py-3 font-medium',
                 isInCart
                   ? 'bg-red-500 text-white hover:bg-red-600'
                   : 'bg-accent text-accent-text hover:bg-accent-hover',
+                cartPop && 'add-cart-pop',
               )}
             >
               {isInCart ? 'Remove from Cart' : 'Add to Cart'}
