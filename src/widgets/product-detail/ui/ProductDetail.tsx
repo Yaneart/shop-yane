@@ -173,7 +173,7 @@ export function ProductDetail() {
                   key={size}
                   onClick={() => setSelectedSize(size)}
                   className={clsx(
-                    'rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors',
+                    'rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors btn-press',
                     selectedSize === size
                       ? 'bg-accent text-accent-text border-transparent'
                       : 'border-border text-text hover:border-border-hover',
@@ -191,7 +191,7 @@ export function ProductDetail() {
             <div className="border-border flex items-center gap-4 rounded-full border px-4 py-2">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="text-text-secondary hover:text-text transition-colors"
+                className="text-text-secondary hover:text-text btn-icon"
               >
                 <Minus className="h-4 w-4" />
               </button>
@@ -200,7 +200,7 @@ export function ProductDetail() {
               </span>
               <button
                 onClick={() => setQuantity((q) => q + 1)}
-                className="text-text-secondary hover:text-text transition-colors"
+                className="text-text-secondary hover:text-text btn-icon"
               >
                 <Plus className="h-4 w-4" />
               </button>
@@ -209,7 +209,7 @@ export function ProductDetail() {
             <button
               onClick={handleCartToggle}
               className={clsx(
-                'flex-1 rounded-full px-8 py-3 font-medium transition-colors',
+                'flex-1 rounded-full px-8 py-3 font-medium btn-press btn-ripple',
                 isInCart
                   ? 'bg-red-500 text-white hover:bg-red-600'
                   : 'bg-accent text-accent-text hover:bg-accent-hover',

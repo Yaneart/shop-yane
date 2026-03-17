@@ -128,28 +128,24 @@ export function OrderSummary() {
               </div>
               <button
                 type="submit"
-                className="bg-accent text-accent-text hover:bg-accent-hover shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-colors"
+                className="bg-accent text-accent-text hover:bg-accent-hover btn-press shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-colors"
               >
                 Apply
               </button>
             </div>
-            {error && (
-              <p className="px-4 text-xs text-red-500">{error}</p>
-            )}
+            {error && <p className="px-4 text-xs text-red-500">{error}</p>}
           </form>
         )}
 
         <button
           onClick={() => setCheckoutOpen(true)}
-          className="bg-accent text-accent-text hover:bg-accent-hover w-full rounded-full py-3.5 text-sm font-medium transition-colors sm:text-base"
+          className="bg-accent text-accent-text hover:bg-accent-hover btn-press btn-ripple w-full rounded-full py-3.5 text-sm font-medium transition-colors sm:text-base"
         >
           Checkout
         </button>
       </div>
 
-      {checkoutOpen && (
-        <CheckoutModal onClose={() => setCheckoutOpen(false)} />
-      )}
+      {checkoutOpen && <CheckoutModal onClose={() => setCheckoutOpen(false)} />}
     </div>
   );
 }

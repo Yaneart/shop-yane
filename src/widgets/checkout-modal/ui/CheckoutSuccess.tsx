@@ -16,7 +16,7 @@ export function CheckoutSuccess({ email, onClose }: Props) {
       </p>
       <button
         onClick={onClose}
-        className="bg-accent text-accent-text hover:bg-accent-hover mt-2 rounded-full px-8 py-3 text-sm font-medium transition-colors"
+        className="bg-accent text-accent-text hover:bg-accent-hover btn-press mt-2 rounded-full px-8 py-3 text-sm font-medium transition-colors"
       >
         Continue Shopping
       </button>

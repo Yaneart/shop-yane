@@ -74,7 +74,7 @@ export function CartList() {
                   }),
                 )
               }
-              className="border-border rounded-lg border px-3 py-1"
+              className="border-border btn-icon rounded-lg border px-3 py-1"
             >
               −
             </button>
@@ -88,7 +88,7 @@ export function CartList() {
                   }),
                 )
               }
-              className="border-border rounded-lg border px-3 py-1"
+              className="border-border btn-icon rounded-lg border px-3 py-1"
             >
               +
             </button>
@@ -98,7 +98,7 @@ export function CartList() {
               dispatch(removeFromCart(item.id));
               toast.success('Вещь удалена из корзины');
             }}
-            className="text-text-tertiary hover:text-red-500"
+            className="text-text-tertiary btn-icon hover:text-red-500"
           >
             ✕
           </button>

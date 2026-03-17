@@ -22,7 +22,7 @@ export function CheckoutModal({ onClose }: Props) {
           <h2 className="text-text text-xl font-bold">Checkout</h2>
           <button
             onClick={onClose}
-            className="text-text-tertiary hover:text-text rounded-full p-1 transition-colors"
+            className="text-text-tertiary hover:text-text btn-icon rounded-full p-1 transition-colors"
           >
             <X size={20} />
           </button>

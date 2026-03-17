@@ -247,7 +247,7 @@ export function CheckoutForm({ onSuccess }: Props) {
       <div className="border-border border-t px-6 py-4">
         <button
           type="submit"
-          className="bg-accent text-accent-text hover:bg-accent-hover w-full rounded-full py-3.5 text-sm font-medium transition-colors sm:text-base"
+          className="bg-accent text-accent-text hover:bg-accent-hover btn-press btn-ripple w-full rounded-full py-3.5 text-sm font-medium transition-colors sm:text-base"
         >
           Place Order — ${total.toFixed(2)}
         </button>

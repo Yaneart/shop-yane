@@ -33,7 +33,10 @@ export function Header() {
           <Link to={'/wishlist'}>
             <div className="relative">
               {wishlistCount > 0 && (
-                <span key={wishlistCount} className="cart-pop absolute -right-3">
+                <span
+                  key={wishlistCount}
+                  className="cart-pop absolute -right-3"
+                >
                   {wishlistCount}
                 </span>
               )}
@@ -45,14 +48,16 @@ export function Header() {
           </Link>
           <Link to={'/cart'}>
             <div className="relative">
-              <span key={count} className="cart-pop absolute -right-3">{count}</span>
+              <span key={count} className="cart-pop absolute -right-3">
+                {count}
+              </span>
               <ShoppingBasket
                 size={35}
                 className="text-text-secondary hover:text-text transition-colors"
               />
             </div>
           </Link>
-          <button onClick={toggle}>
+          <button onClick={toggle} className="btn-icon">
             {theme === 'light' ? (
               <Moon
                 size={35}

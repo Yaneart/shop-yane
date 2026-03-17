@@ -71,9 +71,7 @@ export function CatalogFilters() {
               value={priceMin ?? ''}
               onChange={(e) =>
                 dispatch(
-                  setPriceMin(
-                    e.target.value ? Number(e.target.value) : null,
-                  ),
+                  setPriceMin(e.target.value ? Number(e.target.value) : null),
                 )
               }
               className="border-border text-text placeholder:text-text-tertiary w-full rounded-lg border bg-transparent px-3 py-2 text-sm outline-none"
@@ -85,9 +83,7 @@ export function CatalogFilters() {
               value={priceMax ?? ''}
               onChange={(e) =>
                 dispatch(
-                  setPriceMax(
-                    e.target.value ? Number(e.target.value) : null,
-                  ),
+                  setPriceMax(e.target.value ? Number(e.target.value) : null),
                 )
               }
               className="border-border text-text placeholder:text-text-tertiary w-full rounded-lg border bg-transparent px-3 py-2 text-sm outline-none"
@@ -108,7 +104,7 @@ export function CatalogFilters() {
                 key={size}
                 onClick={() => dispatch(toggleSize(size))}
                 className={clsx(
-                  'rounded-lg border px-3 py-1.5 text-sm transition-colors',
+                  'btn-press rounded-lg border px-3 py-1.5 text-sm transition-colors',
                   sizes.includes(size)
                     ? 'bg-accent text-accent-text border-accent'
                     : 'border-border text-text-secondary hover:border-accent hover:text-text',
@@ -126,7 +122,7 @@ export function CatalogFilters() {
           onClick={() => dispatch(resetFilters())}
           disabled={!hasActiveFilters}
           className={clsx(
-            'w-full rounded-full py-2.5 text-sm font-medium transition-colors',
+            'btn-press w-full rounded-full py-2.5 text-sm font-medium transition-colors',
             hasActiveFilters
               ? 'bg-accent text-accent-text hover:bg-accent-hover'
               : 'bg-border text-text-tertiary cursor-not-allowed',

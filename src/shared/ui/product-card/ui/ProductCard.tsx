@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from '@app/store';
 import { addToCart, removeFromCart, selectIsInCart } from '@entities/cart';
-import {
-  toggleWishlist,
-  selectIsInWishlist,
-} from '@entities/wishlist';
+import { toggleWishlist, selectIsInWishlist } from '@entities/wishlist';
 import { StarIcon } from '../../custom-icon/CustomIcons';
 import { Heart } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -38,7 +35,9 @@ export function ProductCard({
     e.preventDefault();
     e.stopPropagation();
     dispatch(toggleWishlist({ id, name, image, price, oldPrice, rating }));
-    toast.success(isInWishlist ? 'Удалено из избранного!' : 'Добавлено в избранное!');
+    toast.success(
+      isInWishlist ? 'Удалено из избранного!' : 'Добавлено в избранное!',
+    );
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -68,7 +67,7 @@ export function ProductCard({
         )}
         <button
           onClick={handleToggleWishlist}
-          className="absolute top-2 right-2 rounded-full p-1.5 backdrop-blur-sm transition-transform hover:scale-110"
+          className="btn-icon absolute top-2 right-2 rounded-full p-1.5 backdrop-blur-sm"
           aria-label={isInWishlist ? 'Удалить из избранного' : 'В избранное'}
         >
           <Heart
@@ -110,7 +109,7 @@ export function ProductCard({
           onClick={handleAddToCart}
           className={clsx(
             isInCart ? 'bg-red-500' : 'bg-bg-secondary',
-            'mt-2 min-w-[140px] self-center rounded-lg px-4 py-2 text-center text-xs font-medium text-white transition-colors sm:text-sm',
+            'btn-press btn-ripple mt-2 min-w-[140px] self-center rounded-lg px-4 py-2 text-center text-xs font-medium text-white sm:text-sm',
           )}
         >
           {isInCart ? 'In Cart' : 'Add to Cart'}
