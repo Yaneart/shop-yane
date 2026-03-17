@@ -32,7 +32,7 @@ export function WishlistPage() {
   return (
     <section className="px-4 py-10 sm:px-8 lg:px-16">
       <Helmet>
-        <title>Wishlist ({items.length}) — YaneSHOP</title>
+      <title>{`Wishlist (${items.length}) — YaneSHOP`}</title>
       </Helmet>
       <h1 className="text-text mb-8 text-2xl font-bold sm:text-3xl">
         Избранное
