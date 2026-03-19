@@ -4,27 +4,22 @@ import { selectWishlistItems } from '@entities/wishlist';
 import { ProductCard } from '@shared/ui/product-card';
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
+import { EmptyState } from '@/shared/ui/empty-state';
 
 export function WishlistPage() {
   const items = useSelector(selectWishlistItems);
 
   if (items.length === 0) {
     return (
-      <section className="flex min-h-[70vh] flex-col items-center justify-center gap-4 px-4 text-center">
+      <section>
         <Helmet>
-          <title>Wishlist — YaneSHOP</title>
+          <title>Wishlist - YaneSHOP</title>
         </Helmet>
-        <Heart size={64} className="text-text/20" />
-        <h1 className="text-text text-2xl font-bold">Избранное пусто</h1>
-        <p className="text-text-tertiary max-w-sm text-base">
-          Добавляйте товары в избранное, нажимая на сердечко на карточке.
-        </p>
-        <Link
-          to="/catalog"
-          className="bg-accent text-accent-text mt-4 rounded-full px-8 py-3 text-sm font-medium transition-opacity hover:opacity-80"
-        >
-          Перейти в каталог
-        </Link>
+        <EmptyState
+          icon={Heart}
+          title="Избранное пусто"
+          description="Добавляйте товары в избранное, нажимая на сердечко на карточке"
+        />
       </section>
     );
   }
@@ -32,7 +27,7 @@ export function WishlistPage() {
   return (
     <section className="px-4 py-10 sm:px-8 lg:px-16">
       <Helmet>
-      <title>{`Wishlist (${items.length}) — YaneSHOP`}</title>
+        <title>{`Wishlist (${items.length}) — YaneSHOP`}</title>
       </Helmet>
       <h1 className="text-text mb-8 text-2xl font-bold sm:text-3xl">
         Избранное

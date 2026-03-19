@@ -1,3 +1,4 @@
+import { EmptyState } from '@/shared/ui/empty-state';
 import { useSelector, useDispatch } from '@app/store';
 import {
   selectCartItems,
@@ -5,6 +6,7 @@ import {
   removeFromCart,
   updateQuantity,
 } from '@entities/cart';
+import { ShoppingBasket } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export function CartList() {
@@ -14,13 +16,11 @@ export function CartList() {
 
   if (items.length === 0) {
     return (
-      <div className="flex flex-1 flex-col gap-4">
-        <div className="border-border rounded-2xl border p-4 sm:p-6">
-          <p className="text-text-tertiary py-10 text-center text-lg">
-            Your cart is empty
-          </p>
-        </div>
-      </div>
+      <EmptyState
+        icon={ShoppingBasket}
+        title="Корзина пуста"
+        description="Добавьте товары из каталога, чтобы оформить заказ"
+      />
     );
   }
 
