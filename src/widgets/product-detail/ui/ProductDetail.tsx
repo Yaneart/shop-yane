@@ -16,6 +16,7 @@ import {
 import toast from 'react-hot-toast';
 import { useSimulatedLoading } from '@/shared/hooks/useSimulatedLoading';
 import { ProductDetailSkeleton } from '@/shared/ui/skeleton';
+import { ImageGallery } from '@/shared/ui/image-gallery';
 
 export function ProductDetail() {
   const { id } = useParams();
@@ -24,7 +25,6 @@ export function ProductDetail() {
   const isInCart = useSelector(selectIsInCart(product?.id ?? -1));
 
   const [selectedSize, setSelectedSize] = useState<string>('M');
-  const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const isloading = useSimulatedLoading();
   const [cartPop, setCartPop] = useState(false);
@@ -45,7 +45,7 @@ export function ProductDetail() {
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
     : null;
 
-  const images = [product.image, product.image, product.image];
+  const images = product.images ?? [product.image];
 
   const handleCartToggle = () => {
     setCartPop(true);
@@ -83,40 +83,12 @@ export function ProductDetail() {
       </nav>
 
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-5">
-        <div className="flex flex-col-reverse gap-3 sm:flex-row lg:w-1/2">
-          <div className="flex gap-2 sm:flex-col">
-            {images.map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedImage(i)}
-                className={clsx(
-                  'h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg border-2 transition-colors sm:h-20 sm:w-20',
-                  selectedImage === i
-                    ? 'border-accent'
-                    : 'border-border hover:border-border-hover',
-                )}
-              >
-                <img
-                  src={img}
-                  alt={`${product.name} ${i + 1}`}
-                  className="h-full w-full object-cover"
-                />
-              </button>
-            ))}
-          </div>
-
-          <div className="relative aspect-square overflow-hidden rounded-2xl">
-            <img
-              src={images[selectedImage]}
-              alt={product.name}
-              className="h-full w-full object-cover"
-            />
-            {discount && (
-              <span className="absolute top-3 left-3 rounded-lg bg-red-500 px-3 py-1 text-sm font-semibold text-white">
-                -{discount}%
-              </span>
-            )}
-          </div>
+        <div className="lg:w-1/2">
+          <ImageGallery
+            images={images}
+            name={product.name}
+            discount={discount}
+          />
         </div>
 
         <div className="flex flex-col gap-6 lg:w-1/2">

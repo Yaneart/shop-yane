@@ -296,6 +296,10 @@
   animation: empty-fade-in 0.5s ease-out;
 }
 
+.scale-200 {
+  transform: scale(2);
+}
+
 @layer base {
   *,
   *::before,
