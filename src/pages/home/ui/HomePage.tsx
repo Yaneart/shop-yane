@@ -8,7 +8,7 @@ export function HomePage() {
   return (
     <div>
       <Helmet>
-        <title>YaneSHOP — Stylish Clothes & Hoodies</title>
+        <title>YaneSHOP</title>
         <meta
           name="description"
           content="Shop unique hoodies, t-shirts, jackets and more at YaneSHOP. Best selling anime & meme apparel."
