@@ -3,7 +3,7 @@ import { ProductCardSkeleton } from '@/shared/ui/skeleton';
 import { Link } from 'react-router-dom';
 import { useSelector } from '@app/store';
 import { selectFilteredProducts } from '@features/catalog-filter';
-import { useSimulatedLoading } from '@/shared/hooks/useSimulatedLoading';
+import { useSimulatedLoading } from '@shared/hooks';
 
 export function ProductGrid() {
   const products = useSelector(selectFilteredProducts);

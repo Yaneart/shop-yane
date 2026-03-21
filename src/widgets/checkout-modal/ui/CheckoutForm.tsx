@@ -8,7 +8,8 @@ import {
   selectPromoCode,
   selectPromoPercent,
 } from '@/entities/cart';
-import { DELIVERY_FEE, FREE_DELIVERY_THRESHOLD } from '@shared/config';
+import { CITIES, DELIVERY_FEE, FREE_DELIVERY_THRESHOLD } from '@shared/config';
+import { usePhoneMask } from '@/shared/hooks';
 
 interface Props {
   onSuccess: (email: string) => void;
@@ -37,23 +38,23 @@ export function CheckoutForm({ onSuccess }: Props) {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    phone: '',
     address: '',
     city: '',
     zip: '',
     payment: 'card',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const phone = usePhoneMask();
 
   const validate = () => {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = 'Required';
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       e.email = 'Valid email required';
-    if (!form.phone.trim()) e.phone = 'Required';
+    if (!phone.isComplete) e.phone = 'Enter full phone number';
     if (!form.address.trim()) e.address = 'Required';
     if (!form.city.trim()) e.city = 'Required';
-    if (!form.zip.trim()) e.zip = 'Required';
+    if (form.zip.length !== 6) e.zip = '6-digit ZIP required';
     return e;
   };
 
@@ -61,8 +62,20 @@ export function CheckoutForm({ onSuccess }: Props) {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    if (name === 'zip') {
+      setForm((prev) => ({
+        ...prev,
+        zip: value.replace(/\D/g, '').slice(0, 6),
+      }));
+    } else {
+      setForm((prev) => ({ ...prev, [name]: value }));
+    }
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    phone.onChange(e);
+    if (errors.phone) setErrors((prev) => ({ ...prev, phone: '' }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -111,9 +124,10 @@ export function CheckoutForm({ onSuccess }: Props) {
             <div className="sm:col-span-2">
               <input
                 name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                placeholder="Phone number"
+                value={phone.value}
+                onChange={handlePhoneChange}
+                placeholder="(999) 123-4567"
+                type="tel"
                 className={inputCls(errors.phone)}
               />
               {errors.phone && (
@@ -147,9 +161,15 @@ export function CheckoutForm({ onSuccess }: Props) {
                 name="city"
                 value={form.city}
                 onChange={handleChange}
-                placeholder="City"
+                placeholder="Город"
+                list="city-suggestions"
                 className={inputCls(errors.city)}
               />
+              <datalist id="city-suggestions">
+                {CITIES.map((city) => (
+                  <option key={city} value={city} />
+                ))}
+              </datalist>
               {errors.city && (
                 <p className="mt-1 px-1 text-xs text-red-500">{errors.city}</p>
               )}
@@ -159,7 +179,8 @@ export function CheckoutForm({ onSuccess }: Props) {
                 name="zip"
                 value={form.zip}
                 onChange={handleChange}
-                placeholder="ZIP / Postal code"
+                placeholder="Индекс"
+                inputMode="numeric"
                 className={inputCls(errors.zip)}
               />
               {errors.zip && (

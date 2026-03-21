@@ -14,7 +14,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useSimulatedLoading } from '@/shared/hooks/useSimulatedLoading';
+import { useSimulatedLoading } from '@shared/hooks';
 import { ProductDetailSkeleton } from '@/shared/ui/skeleton';
 import { ImageGallery } from '@/shared/ui/image-gallery';
 

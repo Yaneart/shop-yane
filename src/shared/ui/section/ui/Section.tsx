@@ -1,4 +1,4 @@
-import { useFadein } from '@/shared/hooks/useFadeIn';
+import { useFadein } from '@shared/hooks';
 import { Link } from 'react-router-dom';
 
 interface SectionProps {
