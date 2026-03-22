@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { CatalogFilters } from '@/widgets/catalog-filters';
 import { ProductGrid } from '@/widgets/product-grid';
+import { BreadCrumbs } from '@/shared/ui/breadcrumbs';
 
 export function CatalogPage() {
   return (
@@ -12,6 +13,7 @@ export function CatalogPage() {
           content="Browse our full catalog of hoodies, t-shirts, jackets, pajamas and long-sleeves."
         />
       </Helmet>
+      <BreadCrumbs items={[{ label: 'Catalog' }]} />
       <div className="flex flex-col lg:flex-row lg:gap-10">
         <CatalogFilters />
         <ProductGrid />

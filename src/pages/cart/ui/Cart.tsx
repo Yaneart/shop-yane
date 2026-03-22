@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { CartList } from '@/widgets/cart-list';
 import { OrderSummary } from '@/widgets/order-summary';
+import { BreadCrumbs } from '@/shared/ui/breadcrumbs';
 
 export function CartPage() {
   return (
@@ -8,6 +9,7 @@ export function CartPage() {
       <Helmet>
         <title>Cart — YaneSHOP</title>
       </Helmet>
+      <BreadCrumbs items={[{ label: 'Cart' }]} />
       <h2 className="text-text mb-8 text-2xl font-bold sm:text-3xl md:text-4xl">
         Your Cart
       </h2>

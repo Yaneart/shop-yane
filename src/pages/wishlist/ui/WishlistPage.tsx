@@ -5,6 +5,7 @@ import { ProductCard } from '@shared/ui/product-card';
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { EmptyState } from '@/shared/ui/empty-state';
+import { BreadCrumbs } from '@/shared/ui/breadcrumbs';
 
 export function WishlistPage() {
   const items = useSelector(selectWishlistItems);
@@ -29,6 +30,7 @@ export function WishlistPage() {
       <Helmet>
         <title>{`Wishlist (${items.length}) — YaneSHOP`}</title>
       </Helmet>
+      <BreadCrumbs items={[{ label: 'Wishlist' }]} />
       <h1 className="text-text mb-8 text-2xl font-bold sm:text-3xl">
         Избранное
         <span className="text-text-tertiary ml-2 text-lg font-normal">

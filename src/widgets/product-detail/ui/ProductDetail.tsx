@@ -1,22 +1,16 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from '@app/store';
 import { addToCart, removeFromCart, selectIsInCart } from '@entities/cart';
 import { mockProducts } from '@entities/product';
 import clsx from 'clsx';
 import { StarIcon } from '@/shared/ui/custom-icon/CustomIcons';
-import {
-  ChevronRight,
-  Minus,
-  Plus,
-  Undo2,
-  Truck,
-  ShieldCheck,
-} from 'lucide-react';
+import { Minus, Plus, Undo2, Truck, ShieldCheck } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useSimulatedLoading } from '@shared/hooks';
 import { ProductDetailSkeleton } from '@/shared/ui/skeleton';
 import { ImageGallery } from '@/shared/ui/image-gallery';
+import { BreadCrumbs } from '@/shared/ui/breadcrumbs';
 
 export function ProductDetail() {
   const { id } = useParams();
@@ -70,17 +64,9 @@ export function ProductDetail() {
 
   return (
     <section className="px-4 py-10 sm:px-8 md:px-16 md:py-16 lg:px-24 xl:px-40">
-      <nav className="text-text-tertiary mb-6 flex items-center gap-1 text-sm">
-        <Link to="/" className="hover:text-text transition-colors">
-          Home
-        </Link>
-        <ChevronRight className="h-4 w-4" />
-        <Link to="/catalog" className="hover:text-text transition-colors">
-          Catalog
-        </Link>
-        <ChevronRight className="h-4 w-4" />
-        <span className="text-text">{product.name}</span>
-      </nav>
+      <BreadCrumbs
+        items={[{ label: 'Catalog', to: '/catalog' }, { label: product.name }]}
+      />
 
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-5">
         <div className="lg:w-1/2">
