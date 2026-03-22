@@ -13,7 +13,7 @@ interface bredCrumbsProps {
 export function BreadCrumbs({ items }: bredCrumbsProps) {
   return (
     <nav className="text-text-tertiary mb-6 flex items-center gap-1 text-sm">
-      <Link to="/" hover:text-text transition-colors>
+      <Link to="/" className="hover:text-text transition-colors">
         Home
       </Link>
       {items.map((item, i) => (
