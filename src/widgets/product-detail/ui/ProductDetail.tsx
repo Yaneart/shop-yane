@@ -11,6 +11,8 @@ import { useSimulatedLoading } from '@shared/hooks';
 import { ProductDetailSkeleton } from '@/shared/ui/skeleton';
 import { ImageGallery } from '@/shared/ui/image-gallery';
 import { BreadCrumbs } from '@/shared/ui/breadcrumbs';
+import { mockReviews, ReviewCard } from '@/shared/ui/reviews-section';
+import { Tabs } from '@/shared/ui/tabs';
 
 export function ProductDetail() {
   const { id } = useParams();
@@ -200,6 +202,82 @@ export function ProductDetail() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-12">
+        <Tabs
+          tabs={[
+            {
+              label: 'Description',
+              content: (
+                <div className="text-text-secondary max-w-3xl space-y-4 leading-relaxed">
+                  <p>
+                    Brave the elements in style with our durable and
+                    weather-resistant {product.name.toLowerCase()}. Designed for
+                    both function and fashion, it keeps you warm without
+                    compromising on looks.
+                  </p>
+                  <p>
+                    Made from premium quality materials with attention to every
+                    detail. Features reinforced stitching, breathable fabric,
+                    and a modern fit that works for any occasion.
+                  </p>
+                  <ul className="list-disc space-y-1 pl-5">
+                    <li>Premium quality fabric</li>
+                    <li>Reinforced stitching</li>
+                    <li>Machine washable</li>
+                    <li>Available sizes: {product.sizes.join(', ')}</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              label: `Reviews (${mockReviews.length})`,
+              content: (
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {mockReviews.map((review) => (
+                    <ReviewCard
+                      key={review.id}
+                      name={review.name}
+                      rating={review.rating}
+                      text={review.text}
+                    />
+                  ))}
+                </div>
+              ),
+            },
+            {
+              label: 'Delivery',
+              content: (
+                <div className="text-text-secondary max-w-3xl space-y-4 leading-relaxed">
+                  <div className="space-y-3">
+                    <h3 className="text-text font-semibold">Shipping</h3>
+                    <p>
+                      Free standard shipping on all orders over $100. Standard
+                      delivery takes 5-7 business days. Express shipping
+                      available for $9.99 (2-3 business days).
+                    </p>
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-text font-semibold">Returns</h3>
+                    <p>
+                      Free returns within 10 days of delivery. Items must be
+                      unworn and in original packaging. Refund will be processed
+                      within 3-5 business days after we receive your return.
+                    </p>
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-text font-semibold">Warranty</h3>
+                    <p>
+                      All products come with a 1-year quality guarantee covering
+                      manufacturing defects. Contact our support team for
+                      warranty claims.
+                    </p>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+        />
       </div>
     </section>
   );
