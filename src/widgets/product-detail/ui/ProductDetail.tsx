@@ -11,7 +11,11 @@ import { useSimulatedLoading } from '@shared/hooks';
 import { ProductDetailSkeleton } from '@/shared/ui/skeleton';
 import { ImageGallery } from '@/shared/ui/image-gallery';
 import { BreadCrumbs } from '@/shared/ui/breadcrumbs';
-import { mockReviews, ReviewCard } from '@/shared/ui/reviews-section';
+import {
+  mockReviews,
+  ReviewCard,
+  ReviewForm,
+} from '@/shared/ui/reviews-section';
 import { Tabs } from '@/shared/ui/tabs';
 
 export function ProductDetail() {
@@ -24,6 +28,7 @@ export function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const isloading = useSimulatedLoading();
   const [cartPop, setCartPop] = useState(false);
+  const [reviews, setReviews] = useState(mockReviews);
 
   if (isloading) {
     return <ProductDetailSkeleton />;
@@ -231,17 +236,27 @@ export function ProductDetail() {
               ),
             },
             {
-              label: `Reviews (${mockReviews.length})`,
+              label: `Reviews (${reviews.length})`,
               content: (
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {mockReviews.map((review) => (
-                    <ReviewCard
-                      key={review.id}
-                      name={review.name}
-                      rating={review.rating}
-                      text={review.text}
-                    />
-                  ))}
+                <div className="space-y-6">
+                  <ReviewForm
+                    onSubmit={(review) =>
+                      setReviews((prev) => [
+                        { id: Date.now(), ...review },
+                        ...prev,
+                      ])
+                    }
+                  />
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {reviews.map((review) => (
+                      <ReviewCard
+                        key={review.id}
+                        name={review.name}
+                        rating={review.rating}
+                        text={review.text}
+                      />
+                    ))}
+                  </div>
                 </div>
               ),
             },
