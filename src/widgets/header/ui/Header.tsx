@@ -15,6 +15,7 @@ import { useSelector } from '@/app/store';
 import { selectCartItemCount } from '@/entities/cart';
 import { selectWishlistCount } from '@/entities/wishlist';
 import { SearchDropdown } from '@features/search';
+import { Tooltip } from '@/shared/ui/tooltip';
 
 export function Header() {
   const { theme, toggle } = useTheme();
@@ -34,57 +35,65 @@ export function Header() {
           <Link to="/">
             <Logo className="text-text hover:text-primary h-10 transition-all duration-300 hover:scale-105" />
           </Link>
-          <Link to="/catalog">
-            <BookOpen
-              size={35}
-              className="text-text-secondary hover:text-text transition-colors"
-            />
-          </Link>
+          <Tooltip text="Catalog">
+            <Link to="/catalog">
+              <BookOpen
+                size={35}
+                className="text-text-secondary hover:text-text transition-colors"
+              />
+            </Link>
+          </Tooltip>
         </div>
 
         <SearchDropdown />
 
         <div className="ml-auto flex shrink-0 items-center gap-4">
-          <Link to="/wishlist">
-            <div className="relative">
-              {wishlistCount > 0 && (
-                <span
-                  key={wishlistCount}
-                  className="cart-pop absolute -right-3"
-                >
-                  {wishlistCount}
+          <Tooltip text="Wishlist">
+            <Link to="/wishlist">
+              <div className="relative">
+                {wishlistCount > 0 && (
+                  <span
+                    key={wishlistCount}
+                    className="cart-pop absolute -right-3"
+                  >
+                    {wishlistCount}
+                  </span>
+                )}
+                <Heart
+                  size={35}
+                  className="text-text-secondary hover:text-text transition-colors"
+                />
+              </div>
+            </Link>
+          </Tooltip>
+          <Tooltip text="Cart">
+            <Link to="/cart">
+              <div className="relative">
+                <span key={count} className="cart-pop absolute -right-3">
+                  {count}
                 </span>
+                <ShoppingBasket
+                  size={35}
+                  className="text-text-secondary hover:text-text transition-colors"
+                />
+              </div>
+            </Link>
+          </Tooltip>
+          <Tooltip text="Theme">
+            <button onClick={toggle} className="btn-icon">
+              {theme === 'light' ? (
+                <Moon
+                  size={35}
+                  className="text-text-secondary hover:text-text transition-colors"
+                />
+              ) : (
+                <Sun
+                  size={35}
+                  className="text-text-secondary hover:text-text transition-colors"
+                />
               )}
-              <Heart
-                size={35}
-                className="text-text-secondary hover:text-text transition-colors"
-              />
-            </div>
-          </Link>
-          <Link to="/cart">
-            <div className="relative">
-              <span key={count} className="cart-pop absolute -right-3">
-                {count}
-              </span>
-              <ShoppingBasket
-                size={35}
-                className="text-text-secondary hover:text-text transition-colors"
-              />
-            </div>
-          </Link>
-          <button onClick={toggle} className="btn-icon">
-            {theme === 'light' ? (
-              <Moon
-                size={35}
-                className="text-text-secondary hover:text-text transition-colors"
-              />
-            ) : (
-              <Sun
-                size={35}
-                className="text-text-secondary hover:text-text transition-colors"
-              />
-            )}
-          </button>
+            </button>
+          </Tooltip>
         </div>
       </nav>
 
