@@ -8,4 +8,5 @@ export interface Product {
   rating: number;
   category: string;
   sizes: string[];
+  stock: number;
 }

@@ -14,6 +14,7 @@ interface ProductCardProps {
   price: number;
   oldPrice?: number;
   rating: number;
+  stock?: number;
 }
 
 export function ProductCard({
@@ -23,6 +24,7 @@ export function ProductCard({
   price,
   oldPrice,
   rating,
+  stock = 99,
 }: ProductCardProps) {
   const dispatch = useDispatch();
   const isInCart = useSelector(selectIsInCart(id));
@@ -108,16 +110,34 @@ export function ProductCard({
           )}
         </div>
 
+        <span
+          className={clsx(
+            'self-center text-xs',
+            stock === 0
+              ? 'font-semibold text-red-500'
+              : stock <= 3
+                ? 'text-orange-500'
+                : 'text-text-tertiary',
+          )}
+        >
+          {stock === 0 ? 'Нет в наличии' : `В наличии: ${stock} шт`}
+        </span>
+
         <button
           onClick={handleAddToCart}
           onAnimationEnd={() => setCartPop(false)}
+          disabled={stock === 0}
           className={clsx(
-            isInCart ? 'bg-red-500' : 'bg-bg-secondary',
+            stock === 0
+              ? 'cursor-not-allowed bg-gray-400 opacity-50'
+              : isInCart
+                ? 'bg-red-500'
+                : 'bg-bg-secondary',
             'btn-press btn-ripple mt-2 min-w-[140px] self-center rounded-lg px-4 py-2 text-center text-xs font-medium text-white sm:text-sm',
             cartPop && 'add-cart-pop',
           )}
         >
-          {isInCart ? 'In Cart' : 'Add to Cart'}
+          {stock === 0 ? 'Out of Stock' : isInCart ? 'In Cart' : 'Add to Cart'}
         </button>
       </div>
     </div>

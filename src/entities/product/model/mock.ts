@@ -11,6 +11,7 @@ export const mockProducts: Product[] = [
     rating: 4.5,
     category: 'Hoodie',
     sizes: ['S', 'M', 'L', 'XL'],
+    stock: 12,
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'Hoodie',
     sizes: ['M', 'L', 'XL', 'XXL'],
+    stock: 25,
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ export const mockProducts: Product[] = [
     rating: 5,
     category: 'Hoodie',
     sizes: ['XS', 'S', 'M', 'L'],
+    stock: 8,
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ export const mockProducts: Product[] = [
     rating: 3.5,
     category: 'Hoodie',
     sizes: ['S', 'M', 'L'],
+    stock: 34,
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'Long-sleeve',
     sizes: ['M', 'L', 'XL'],
+    stock: 3,
   },
   {
     id: 6,
@@ -63,6 +68,7 @@ export const mockProducts: Product[] = [
     rating: 4.5,
     category: 'Hoodie',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    stock: 18,
   },
   {
     id: 7,
@@ -74,6 +80,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'Hoodie',
     sizes: ['S', 'M', 'L', 'XL'],
+    stock: 41,
   },
   {
     id: 8,
@@ -84,6 +91,7 @@ export const mockProducts: Product[] = [
     rating: 4.5,
     category: 'Hoodie',
     sizes: ['XS', 'S', 'M'],
+    stock: 2,
   },
   {
     id: 9,
@@ -95,6 +103,7 @@ export const mockProducts: Product[] = [
     rating: 5,
     category: 'Hoodie',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    stock: 15,
   },
   {
     id: 10,
@@ -105,6 +114,7 @@ export const mockProducts: Product[] = [
     rating: 3.5,
     category: 'Hoodie',
     sizes: ['M', 'L', 'XL'],
+    stock: 0,
   },
   {
     id: 11,
@@ -116,6 +126,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'T-shirts',
     sizes: ['XS', 'S', 'M', 'L'],
+    stock: 22,
   },
   {
     id: 12,
@@ -126,6 +137,7 @@ export const mockProducts: Product[] = [
     rating: 4.5,
     category: 'T-shirts',
     sizes: ['S', 'M', 'L', 'XL'],
+    stock: 37,
   },
   {
     id: 13,
@@ -136,6 +148,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'Long-sleeve',
     sizes: ['M', 'L', 'XL'],
+    stock: 9,
   },
   {
     id: 14,
@@ -147,6 +160,7 @@ export const mockProducts: Product[] = [
     rating: 5,
     category: 'T-shirts',
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    stock: 46,
   },
   {
     id: 15,
@@ -157,6 +171,7 @@ export const mockProducts: Product[] = [
     rating: 3.5,
     category: 'Hoodie',
     sizes: ['S', 'M', 'L'],
+    stock: 0,
   },
   {
     id: 16,
@@ -168,6 +183,7 @@ export const mockProducts: Product[] = [
     rating: 4.5,
     category: 'Jackets',
     sizes: ['M', 'L', 'XL'],
+    stock: 14,
   },
   {
     id: 17,
@@ -178,6 +194,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'Hoodie',
     sizes: ['XS', 'S', 'M', 'L'],
+    stock: 28,
   },
   {
     id: 18,
@@ -189,6 +206,7 @@ export const mockProducts: Product[] = [
     rating: 4.5,
     category: 'Jackets',
     sizes: ['S', 'M', 'L', 'XL'],
+    stock: 7,
   },
   {
     id: 19,
@@ -199,6 +217,7 @@ export const mockProducts: Product[] = [
     rating: 3.5,
     category: 'T-shirts',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    stock: 33,
   },
   {
     id: 20,
@@ -210,6 +229,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'Hoodie',
     sizes: ['M', 'L', 'XL', 'XXL'],
+    stock: 19,
   },
   {
     id: 21,
@@ -220,6 +240,7 @@ export const mockProducts: Product[] = [
     rating: 4.5,
     category: 'Pajamas',
     sizes: ['S', 'M', 'L'],
+    stock: 11,
   },
   {
     id: 22,
@@ -231,6 +252,7 @@ export const mockProducts: Product[] = [
     rating: 5,
     category: 'Hoodie',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    stock: 42,
   },
   {
     id: 23,
@@ -241,6 +263,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'T-shirts',
     sizes: ['S', 'M', 'L'],
+    stock: 1,
   },
   {
     id: 24,
@@ -252,6 +275,7 @@ export const mockProducts: Product[] = [
     rating: 4.5,
     category: 'Pajamas',
     sizes: ['XS', 'S', 'M', 'L'],
+    stock: 16,
   },
   {
     id: 25,
@@ -262,6 +286,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'Long-sleeve',
     sizes: ['M', 'L', 'XL'],
+    stock: 30,
   },
   {
     id: 26,
@@ -273,6 +298,7 @@ export const mockProducts: Product[] = [
     rating: 5,
     category: 'Long-sleeve',
     sizes: ['S', 'M', 'L', 'XL'],
+    stock: 5,
   },
   {
     id: 27,
@@ -283,6 +309,7 @@ export const mockProducts: Product[] = [
     rating: 4.5,
     category: 'Jackets',
     sizes: ['M', 'L', 'XL', 'XXL'],
+    stock: 23,
   },
   {
     id: 28,
@@ -294,6 +321,7 @@ export const mockProducts: Product[] = [
     rating: 4,
     category: 'Hoodie',
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    stock: 50,
   },
   {
     id: 29,
@@ -304,6 +332,7 @@ export const mockProducts: Product[] = [
     rating: 3.5,
     category: 'Pajamas',
     sizes: ['S', 'M', 'L'],
+    stock: 2,
   },
   {
     id: 30,
@@ -315,5 +344,6 @@ export const mockProducts: Product[] = [
     rating: 5,
     category: 'Long-sleeve',
     sizes: ['M', 'L', 'XL'],
+    stock: 17,
   },
 ];

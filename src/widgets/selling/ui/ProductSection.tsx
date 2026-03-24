@@ -9,6 +9,7 @@ interface Product {
   price: number;
   oldPrice?: number;
   rating: number;
+  stock: number;
 }
 
 interface ProductSectionProps {
@@ -32,6 +33,7 @@ export function ProductSection({ id, title, products }: ProductSectionProps) {
                   price={p.price}
                   oldPrice={p.oldPrice}
                   rating={p.rating}
+                  stock={p.stock}
                 />
               </Link>
             </li>
