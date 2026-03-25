@@ -5,6 +5,7 @@ export function HomeSection() {
     <Section
       id="home"
       title="Discover And Shop Fashion"
+      className="min-h-[70vh] flex items-center"
       subtitle={
         <>
           Explore, Find And Wear Unique Styles In Our Curated Clothing Store.
@@ -20,7 +21,7 @@ export function HomeSection() {
               <img
                 src="/hoodie1.png"
                 alt="red hoodie"
-                className="w-48 rounded-lg transition-transform duration-300 hover:scale-105 md:w-56 lg:w-64 xl:w-80"
+                className="w-56 rounded-lg transition-transform duration-300 hover:scale-105 md:w-64 lg:w-80 xl:w-[28rem]"
               />
             </picture>
           </a>
@@ -30,7 +31,7 @@ export function HomeSection() {
               <img
                 src="/hoodie2.png"
                 alt="black hoodie"
-                className="w-48 rounded-lg transition-transform duration-300 hover:scale-105 md:w-56 lg:w-64 xl:w-80"
+                className="w-56 rounded-lg transition-transform duration-300 hover:scale-105 md:w-64 lg:w-80 xl:w-[28rem]"
               />
             </picture>
           </a>
