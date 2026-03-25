@@ -46,6 +46,12 @@ export function Header() {
         </div>
 
         <SearchDropdown />
+        <Link
+          to="/about"
+          className="text-text-tertiary hover:text-accent-hover font-medium transition-colors"
+        >
+          About
+        </Link>
 
         <div className="ml-auto flex shrink-0 items-center gap-4">
           <Tooltip text="Wishlist">
@@ -210,6 +216,17 @@ export function Header() {
                   {count}
                 </span>
               )}
+            </Link>
+            <Link
+              to="/about"
+              onClick={handleNavClick}
+              className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                location.pathname === '/about'
+                  ? 'bg-accent/10 text-accent'
+                  : 'text-text-secondary hover:bg-bg-tertiary hover:text-text'
+              }`}
+            >
+              About
             </Link>
           </div>
 

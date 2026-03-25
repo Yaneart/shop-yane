@@ -21,6 +21,9 @@ const WishlistPage = lazy(() =>
 const NotFoundPage = lazy(() =>
   import('@/pages/not-found').then((m) => ({ default: m.NotFoundPage })),
 );
+const AboutPage = lazy(() =>
+  import('@/pages/about').then((m) => ({ default: m.AboutPage })),
+);
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +66,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <WishlistPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/about',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AboutPage />
           </Suspense>
         ),
       },
