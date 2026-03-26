@@ -3,6 +3,7 @@ import { HomeSection } from '@/widgets/home-section';
 import { Reviews } from '@/widgets/reviews-section';
 import { ProductSection } from '@/widgets/selling';
 import { mockProducts } from '@entities/product';
+import { CategorySection } from '@/widgets/category-section';
 
 export function HomePage() {
   return (
@@ -15,6 +16,7 @@ export function HomePage() {
         />
       </Helmet>
       <HomeSection />
+      <CategorySection />
       <ProductSection
         id="best-selling"
         title="Best Selling"
