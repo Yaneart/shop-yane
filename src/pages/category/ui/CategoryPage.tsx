@@ -1,39 +1,8 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { mockProducts } from '@entities/product';
+import { CATEGORY_MAP, mockProducts } from '@entities/product';
 import { BreadCrumbs } from '@/shared/ui/breadcrumbs';
 import { ProductCard } from '@/shared/ui/product-card';
-
-const CATEGORY_MAP: Record<
-  string,
-  { title: string; categoryKey: string; description: string }
-> = {
-  hoodies: {
-    title: 'Hoodies',
-    categoryKey: 'Hoodie',
-    description: 'Cozy and stylish hoodies for every season',
-  },
-  't-shirts': {
-    title: 'T-Shirts',
-    categoryKey: 'T-shirts',
-    description: 'Classic and trendy t-shirts for everyday wear',
-  },
-  jackets: {
-    title: 'Jackets',
-    categoryKey: 'Jackets',
-    description: 'Warm and fashionable jackets for any weather',
-  },
-  pajamas: {
-    title: 'Pajamas',
-    categoryKey: 'Pajamas',
-    description: 'Comfortable pajamas for the best sleep',
-  },
-  'long-sleeve': {
-    title: 'Long Sleeves',
-    categoryKey: 'Long-sleeve',
-    description: 'Stylish long-sleeve shirts and sweatshirts',
-  },
-};
 
 export function CategoryPage() {
   const { category } = useParams<{ category: string }>();
