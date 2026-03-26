@@ -24,6 +24,9 @@ const NotFoundPage = lazy(() =>
 const AboutPage = lazy(() =>
   import('@/pages/about').then((m) => ({ default: m.AboutPage })),
 );
+const CategoryPage = lazy(() =>
+  import('@/pages/category').then((m) => ({ default: m.CategoryPage })),
+);
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +77,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <AboutPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/catalog/:category',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <CategoryPage />
           </Suspense>
         ),
       },
