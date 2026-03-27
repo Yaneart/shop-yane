@@ -10,8 +10,9 @@ import {
   resetFilters,
 } from '@features/catalog-filter';
 import clsx from 'clsx';
+import { CATEGORIES_LIST } from '@/entities/product';
+import { Link } from 'react-router-dom';
 
-const CATEGORIES = ['T-shirts', 'Hoodie', 'Jackets', 'Pajamas', 'Long-sleeve'];
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
 function FilterContent() {
@@ -32,19 +33,25 @@ function FilterContent() {
           <ChevronDown size={18} className="text-text-tertiary" />
         </button>
         <ul className="mt-3 flex flex-col gap-2 pb-5">
-          {CATEGORIES.map((category) => (
-            <li key={category}>
+          {CATEGORIES_LIST.map((cat) => (
+            <li key={cat.slug} className="flex items-center justify-between">
               <label className="flex cursor-pointer items-center gap-2">
                 <input
                   type="checkbox"
-                  checked={categories.includes(category)}
-                  onChange={() => dispatch(toggleCategory(category))}
+                  checked={categories.includes(cat.categoryKey)}
+                  onChange={() => dispatch(toggleCategory(cat.categoryKey))}
                   className="accent-accent h-4 w-4 rounded"
                 />
                 <span className="text-text-secondary hover:text-text text-sm transition-colors">
-                  {category}
+                  {cat.title}
                 </span>
               </label>
+              <Link
+                to={`/catalog/${cat.slug}`}
+                className="text-accent hover:text-accent-hover text-xs transition-colors"
+              >
+                View all
+              </Link>
             </li>
           ))}
         </ul>
