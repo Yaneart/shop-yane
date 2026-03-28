@@ -27,6 +27,9 @@ const AboutPage = lazy(() =>
 const CategoryPage = lazy(() =>
   import('@/pages/category').then((m) => ({ default: m.CategoryPage })),
 );
+const AuthPage = lazy(() =>
+  import('@/pages/auth').then((m) => ({ default: m.AuthPage })),
+);
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +88,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <CategoryPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/login',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AuthPage />
           </Suspense>
         ),
       },

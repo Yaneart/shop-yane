@@ -26,7 +26,6 @@ export function CategoryPage() {
         items={[{ label: 'Catalog', to: '/catalog' }, { label: data.title }]}
       />
 
-      {/* Banner */}
       <div className="bg-bg-secondary relative mb-10 flex h-48 items-center justify-center overflow-hidden rounded-2xl md:h-64">
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20" />
         <div className="relative z-10 text-center text-white">
@@ -38,7 +37,6 @@ export function CategoryPage() {
         </div>
       </div>
 
-      {/* Product Grid */}
       {products.length > 0 ? (
         <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 xl:grid-cols-4">
           {products.map((product) => (
