@@ -55,11 +55,6 @@ export function Header() {
         </Link>
 
         <div className="ml-auto flex shrink-0 items-center gap-4">
-          <Tooltip text="Войти" position="bottom">
-            <Link to="/login" className="btn-icon text-text">
-              <User size={22} />
-            </Link>
-          </Tooltip>
           <Tooltip text="Wishlist">
             <Link to="/wishlist">
               <div className="relative">
@@ -105,6 +100,11 @@ export function Header() {
                 />
               )}
             </button>
+          </Tooltip>
+          <Tooltip text="Войти" position="bottom">
+            <Link to="/login" className="btn-icon text-text">
+              <User size={35} />
+            </Link>
           </Tooltip>
         </div>
       </nav>

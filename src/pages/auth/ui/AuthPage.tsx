@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Logo } from '@/shared/ui/Logo';
 import { GoogleIcon } from '@/shared/ui/custom-icon/CustomIcons';
 import { AUTH_TEXT, AUTH_ERRORS, MIN_PASSWORD_LENGTH } from './constants';
 
@@ -55,11 +53,8 @@ export function AuthPage() {
       </Helmet>
 
       <div className="w-full max-w-md">
-        <div className="mb-8 flex flex-col items-center">
-          <Link to="/">
-            <Logo className="text-text h-10" />
-          </Link>
-          <h1 className="text-text mt-4 text-2xl font-bold">{text.title}</h1>
+        <div className="mb-8 text-center">
+          <h1 className="text-text text-2xl font-bold">{text.title}</h1>
           <p className="text-text-tertiary mt-1 text-sm">{text.subtitle}</p>
         </div>
 
