@@ -4,6 +4,8 @@ import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { GoogleIcon } from '@/shared/ui/custom-icon/CustomIcons';
 import { AUTH_TEXT, AUTH_ERRORS, MIN_PASSWORD_LENGTH } from './constants';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/features/auth';
 
 type Mode = 'login' | 'register';
 
@@ -13,6 +15,10 @@ export function AuthPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useAuth();
 
   const isLogin = mode === 'login';
   const text = AUTH_TEXT[mode];
@@ -35,7 +41,11 @@ export function AuthPage() {
       return;
     }
 
+    login({ name: isLogin ? email.split('@')[0] : name, email });
     toast.success(text.successToast);
+
+    const from = (location.state as { from?: Location })?.from?.pathname || '/';
+    navigate(from, { replace: true });
   }
 
   function switchMode(next: Mode) {

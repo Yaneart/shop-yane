@@ -2,6 +2,7 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from './providers';
 import './styles/index.css';
 import { Toaster, ToastBar } from 'react-hot-toast';
+import { AuthProvider } from '@/features/auth';
 
 const toastOptions = {
   duration: 2500,
@@ -33,20 +34,22 @@ const toastOptions = {
 export function App() {
   return (
     <div>
-      <RouterProvider router={router} />
-      <Toaster position="top-center" gutter={8} toastOptions={toastOptions}>
-        {(t) => (
-          <div
-            style={{
-              animation: t.visible
-                ? 'toast-slide-in 0.35s ease-out'
-                : 'toast-slide-out 0.3s ease-in forwards',
-            }}
-          >
-            <ToastBar toast={t} style={{ ...t.style, animation: 'none' }} />
-          </div>
-        )}
-      </Toaster>
+      <AuthProvider>
+        <RouterProvider router={router} />
+        <Toaster position="top-center" gutter={8} toastOptions={toastOptions}>
+          {(t) => (
+            <div
+              style={{
+                animation: t.visible
+                  ? 'toast-slide-in 0.35s ease-out'
+                  : 'toast-slide-out 0.3s ease-in forwards',
+              }}
+            >
+              <ToastBar toast={t} style={{ ...t.style, animation: 'none' }} />
+            </div>
+          )}
+        </Toaster>
+      </AuthProvider>
     </div>
   );
 }

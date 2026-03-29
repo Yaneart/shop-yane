@@ -8,6 +8,7 @@ import {
   Menu,
   X,
   User,
+  LogOut,
 } from 'lucide-react';
 import { useTheme } from '@shared/lib';
 import { Logo } from '@shared/ui/Logo';
@@ -17,6 +18,7 @@ import { selectCartItemCount } from '@/entities/cart';
 import { selectWishlistCount } from '@/entities/wishlist';
 import { SearchDropdown } from '@features/search';
 import { Tooltip } from '@/shared/ui/tooltip';
+import { useAuth } from '@/features/auth';
 
 export function Header() {
   const { theme, toggle } = useTheme();
@@ -24,6 +26,7 @@ export function Header() {
   const wishlistCount = useSelector(selectWishlistCount);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated, user, logout } = useAuth();
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -101,11 +104,29 @@ export function Header() {
               )}
             </button>
           </Tooltip>
-          <Tooltip text="Войти" position="bottom">
-            <Link to="/login" className="btn-icon text-text">
-              <User size={35} />
-            </Link>
-          </Tooltip>
+          {isAuthenticated ? (
+            <>
+              <Tooltip text={user?.name || 'Профиль'} position="bottom">
+                <Link to="/profile" className="btn-icon text-accent">
+                  <User size={35} />
+                </Link>
+              </Tooltip>
+              <Tooltip text="Выйти" position="bottom">
+                <button onClick={logout} className="btn-icon">
+                  <LogOut
+                    size={35}
+                    className="text-text-secondary hover:text-text transition-colors"
+                  />
+                </button>
+              </Tooltip>
+            </>
+          ) : (
+            <Tooltip text="Войти" position="bottom">
+              <Link to="/login" className="btn-icon text-text">
+                <User size={35} />
+              </Link>
+            </Tooltip>
+          )}
         </div>
       </nav>
 
@@ -234,6 +255,29 @@ export function Header() {
             >
               About
             </Link>
+            {isAuthenticated ? (
+              <button
+                onClick={() => {
+                  logout();
+                  closeMenu();
+                }}
+                className="text-text-secondary hover:bg-bg-tertiary hover:text-text flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors"
+              >
+                <LogOut size={18} /> Выйти
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                onClick={handleNavClick}
+                className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                  location.pathname === '/login'
+                    ? 'bg-accent/10 text-accent'
+                    : 'text-text-secondary hover:bg-bg-tertiary hover:text-text'
+                }`}
+              >
+                Войти
+              </Link>
+            )}
           </div>
 
           <div className="border-border border-t px-4 py-4">

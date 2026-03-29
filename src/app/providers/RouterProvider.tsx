@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { AppLayout } from './layout/AppLayout';
 import { PageLoader } from './layout/PageLoader';
+import { ProtectedRoute } from './ProtectedRoute';
 
 const HomePage = lazy(() =>
   import('@pages/home').then((m) => ({ default: m.HomePage })),
@@ -71,7 +72,9 @@ export const router = createBrowserRouter([
         path: '/wishlist',
         element: (
           <Suspense fallback={<PageLoader />}>
-            <WishlistPage />
+            <ProtectedRoute>
+              <WishlistPage />
+            </ProtectedRoute>
           </Suspense>
         ),
       },
