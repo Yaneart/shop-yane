@@ -14,24 +14,24 @@ export function HomeSection() {
         </>
       }
     >
-      <div className="hidden shrink-0 pt-6 sm:block md:pt-10 lg:pt-20">
-        <div className="flex gap-3 md:gap-4">
+      <div className="shrink-0 pt-6 md:pt-10 lg:pt-20">
+        <div className="flex gap-2 sm:gap-3 md:gap-4">
           <a className="overflow-hidden rounded-lg">
             <picture>
               <img
                 src="/hoodie1.png"
                 alt="red hoodie"
-                className="w-56 rounded-lg transition-transform duration-300 hover:scale-105 md:w-64 lg:w-80 xl:w-[28rem]"
+                className="w-36 rounded-lg transition-transform duration-300 hover:scale-105 sm:w-56 md:w-64 lg:w-80 xl:w-[28rem]"
               />
             </picture>
           </a>
 
-          <a className="overflow-hidden rounded-lg pt-16 md:pt-24 lg:pt-40">
+          <a className="overflow-hidden rounded-lg pt-10 sm:pt-16 md:pt-24 lg:pt-40">
             <picture>
               <img
                 src="/hoodie2.png"
                 alt="black hoodie"
-                className="w-56 rounded-lg transition-transform duration-300 hover:scale-105 md:w-64 lg:w-80 xl:w-[28rem]"
+                className="w-36 rounded-lg transition-transform duration-300 hover:scale-105 sm:w-56 md:w-64 lg:w-80 xl:w-[28rem]"
               />
             </picture>
           </a>
