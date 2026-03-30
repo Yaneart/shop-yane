@@ -2,10 +2,11 @@ import { useDispatch, useSelector } from '@app/store';
 import { addToCart, removeFromCart, selectIsInCart } from '@entities/cart';
 import { toggleWishlist, selectIsInWishlist } from '@entities/wishlist';
 import { StarIcon } from '../../custom-icon/CustomIcons';
-import { Heart } from 'lucide-react';
+import { Heart, Eye } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
 import { useState } from 'react';
+import type { Product } from '@entities/product';
 
 interface ProductCardProps {
   id: number;
@@ -15,16 +16,24 @@ interface ProductCardProps {
   oldPrice?: number;
   rating: number;
   stock?: number;
+  onQuickView?: (product: Product) => void;
+  category?: string;
+  sizes?: string[];
+  images?: string[];
 }
 
 export function ProductCard({
   id,
   name,
   image,
+  images,
   price,
   oldPrice,
   rating,
   stock = 99,
+  onQuickView,
+  category = '',
+  sizes = [],
 }: ProductCardProps) {
   const dispatch = useDispatch();
   const isInCart = useSelector(selectIsInCart(id));
@@ -70,19 +79,49 @@ export function ProductCard({
             -{discount}%
           </span>
         )}
-        <button
-          onClick={handleToggleWishlist}
-          className="btn-icon absolute top-2 right-2 rounded-full p-1.5 backdrop-blur-sm"
-          aria-label={isInWishlist ? 'Удалить из избранного' : 'В избранное'}
-        >
-          <Heart
-            size={18}
-            className={clsx(
-              'transition-colors',
-              isInWishlist ? 'fill-red-500 text-red-500' : 'text-gray-400',
-            )}
-          />
-        </button>
+        <div className="absolute top-2 right-2 flex flex-col gap-1.5">
+          <button
+            onClick={handleToggleWishlist}
+            className="btn-icon rounded-full p-1.5 backdrop-blur-sm"
+            aria-label={
+              isInWishlist ? 'Удалить из избранного' : 'В избранное'
+            }
+          >
+            <Heart
+              size={18}
+              className={clsx(
+                'transition-colors',
+                isInWishlist
+                  ? 'fill-red-500 text-red-500'
+                  : 'text-gray-400',
+              )}
+            />
+          </button>
+          {onQuickView && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onQuickView({
+                  id,
+                  name,
+                  image,
+                  images,
+                  price,
+                  oldPrice,
+                  rating,
+                  stock,
+                  category,
+                  sizes,
+                });
+              }}
+              className="btn-icon rounded-full p-1.5 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100"
+              aria-label="Quick view"
+            >
+              <Eye size={18} className="text-gray-400" />
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="flex w-full flex-col gap-1 pt-3">

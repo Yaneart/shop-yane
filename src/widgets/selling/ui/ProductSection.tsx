@@ -1,16 +1,9 @@
+import { useState } from 'react';
 import { ProductCard } from '@/shared/ui/product-card';
 import { SellingSection } from '@/shared/ui/selling-section';
 import { Link } from 'react-router-dom';
-
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  oldPrice?: number;
-  rating: number;
-  stock: number;
-}
+import { QuickViewModal } from '@/widgets/quick-view';
+import type { Product } from '@entities/product';
 
 interface ProductSectionProps {
   id: string;
@@ -19,6 +12,9 @@ interface ProductSectionProps {
 }
 
 export function ProductSection({ id, title, products }: ProductSectionProps) {
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(
+    null,
+  );
   return (
     <SellingSection id={id} title={title} linkText="View All">
       <div className="-mx-4 px-4 md:mx-0 md:px-0">
@@ -34,12 +30,23 @@ export function ProductSection({ id, title, products }: ProductSectionProps) {
                   oldPrice={p.oldPrice}
                   rating={p.rating}
                   stock={p.stock}
+                  category={p.category}
+                  sizes={p.sizes}
+                  images={p.images}
+                  onQuickView={setQuickViewProduct}
                 />
               </Link>
             </li>
           ))}
         </ul>
       </div>
+
+      {quickViewProduct && (
+        <QuickViewModal
+          product={quickViewProduct}
+          onClose={() => setQuickViewProduct(null)}
+        />
+      )}
     </SellingSection>
   );
 }

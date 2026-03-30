@@ -4,10 +4,16 @@ import { Link } from 'react-router-dom';
 import { useSelector } from '@app/store';
 import { selectFilteredProducts } from '@features/catalog-filter';
 import { useSimulatedLoading } from '@shared/hooks';
+import { QuickViewModal } from '@/widgets/quick-view';
+import type { Product } from '@entities/product';
+import { useState } from 'react';
 
 export function ProductGrid() {
   const products = useSelector(selectFilteredProducts);
   const isLoading = useSimulatedLoading();
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(
+    null,
+  );
 
   return (
     <div className="flex-1">
@@ -40,11 +46,22 @@ export function ProductGrid() {
                   oldPrice={product.oldPrice}
                   rating={product.rating}
                   stock={product.stock}
+                  category={product.category}
+                  sizes={product.sizes}
+                  images={product.images}
+                  onQuickView={setQuickViewProduct}
                 />
               </Link>
             </li>
           ))}
         </ul>
+      )}
+
+      {quickViewProduct && (
+        <QuickViewModal
+          product={quickViewProduct}
+          onClose={() => setQuickViewProduct(null)}
+        />
       )}
     </div>
   );

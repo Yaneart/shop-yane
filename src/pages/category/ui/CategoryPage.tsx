@@ -1,12 +1,18 @@
+import { useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { CATEGORY_MAP, mockProducts } from '@entities/product';
+import type { Product } from '@entities/product';
 import { BreadCrumbs } from '@/shared/ui/breadcrumbs';
 import { ProductCard } from '@/shared/ui/product-card';
+import { QuickViewModal } from '@/widgets/quick-view';
 
 export function CategoryPage() {
   const { category } = useParams<{ category: string }>();
 
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(
+    null,
+  );
   const data = category ? CATEGORY_MAP[category] : undefined;
 
   if (!data) {
@@ -49,6 +55,10 @@ export function CategoryPage() {
                 oldPrice={product.oldPrice}
                 rating={product.rating}
                 stock={product.stock}
+                category={product.category}
+                sizes={product.sizes}
+                images={product.images}
+                onQuickView={setQuickViewProduct}
               />
             </Link>
           ))}
@@ -57,6 +67,13 @@ export function CategoryPage() {
         <p className="text-text-tertiary py-20 text-center text-lg">
           No products found in this category.
         </p>
+      )}
+
+      {quickViewProduct && (
+        <QuickViewModal
+          product={quickViewProduct}
+          onClose={() => setQuickViewProduct(null)}
+        />
       )}
     </section>
   );
